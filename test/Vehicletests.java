@@ -50,5 +50,17 @@ class Vehicletests {
             management.bookVehicle(vehicle, null);
         });
     }
+	
+	@Test 
+    void TestbookingNullVehicle()
+    {
+        // test for exceptions with Vehicle being null
+        assertThrows(NullPointerException.class,()->
+        {
+            VehicleManagement VH = new VehicleManagement();
+            Customer fred = new Customer(1, "fred");
+            VH.bookVehicle(null, fred);
+        });
+    }
 
 }
