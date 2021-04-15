@@ -39,5 +39,16 @@ class Vehicletests {
 		assertThrows(IllegalArgumentException.class, ()->{SUV heiner = new SUV("",1); heiner.setMaxDistance(-1);});
 		assertThrows(IllegalArgumentException.class, ()->{SUV heiner = new SUV("",1); heiner.setMaxDistance(0);});
 	}
+	
+	@Test
+    void TestbookVehiclewithoutCustomerID() {
+        assertThrows(NullPointerException.class, () -> {
+
+            VehicleManagement management = new VehicleManagement();
+            SUV vehicle = new SUV("Tiguan", 100);
+            Customer costumer = new Customer(11, "Bob");
+            management.bookVehicle(vehicle, null);
+        });
+    }
 
 }
