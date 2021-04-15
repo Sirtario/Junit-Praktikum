@@ -29,6 +29,13 @@ public class VehicleManagement {
 	}
 
 	public boolean bookVehicle(Vehicle vehicle, Customer customer) {
+		
+		//if vehicle is unavailable, it cannot be booked
+		if(!vehicle.isAvailable()) 
+		{
+			return false;
+		}
+		
 		vehicle.book();
 		int id = customer.getId();
 		if (bookedVehicles.containsKey(id)) {
