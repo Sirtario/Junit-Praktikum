@@ -9,8 +9,9 @@ public abstract class VehicleBase implements Vehicle {
 	public VehicleBase(String name, int distance, OperatingEnvironment environment) {
 		super();
 		this.name = name;
-		this.maxDistance = distance;
 		this.environment = environment;
+		
+		setMaxDistance(distance);		
 	}
 
 	public OperatingEnvironment getOperatingEnvironment() {
@@ -37,7 +38,13 @@ public abstract class VehicleBase implements Vehicle {
 		return maxDistance;
 	}
 
-	public void setMaxDistance(int distance) {
+	public void setMaxDistance(int distance) throws IllegalArgumentException
+	{
+		if(distance <= 0) 
+		{
+			throw new IllegalArgumentException("distance cannot be 0 or negative");
+		}
+		
 		if (this.maxDistance != distance) {
 			this.maxDistance = distance;
 		}
